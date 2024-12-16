@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1nd4mg7cme8u"]
+
+[ext_resource type="Script" path="res://Script/Interactables/Forest/prisoner.gd" id="1_3fm4t"]
+[ext_resource type="Texture2D" uid="uid://dm44nh6p7x75g" path="res://Sprites/Interactables/prisoner.png" id="1_yx1uu"]
+[ext_resource type="PackedScene" uid="uid://jiiccybsu5tm" path="res://Scenes/Interactables/interact_area.tscn" id="2_mgibm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owhv5"]
+size = Vector2(39, 44)
+
+[node name="Prisoner" type="Node2D"]
+script = ExtResource("1_3fm4t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.178082, 0.186957)
+texture = ExtResource("1_yx1uu")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(19.5, 22)
+shape = SubResource("RectangleShape2D_owhv5")
+
+[node name="InteractArea" parent="." instance=ExtResource("2_mgibm")]
+position = Vector2(22, 47)
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(-37, -20)
+
+[node name="Label" parent="InteractArea" index="1"]
+offset_left = -33.0
+offset_top = -72.0
+offset_right = -11.0
+offset_bottom = -48.0
+
+[editable path="InteractArea"]

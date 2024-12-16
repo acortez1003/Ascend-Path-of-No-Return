@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwywvby0ct07l"]
+
+[ext_resource type="Script" path="res://Script/Interactables/merchant.gd" id="1_j63r0"]
+[ext_resource type="Texture2D" uid="uid://tuyttqiay0fk" path="res://Sprites/Interactables/merchant.png" id="1_suyck"]
+[ext_resource type="PackedScene" uid="uid://jiiccybsu5tm" path="res://Scenes/Interactables/interact_area.tscn" id="2_rjimo"]
+
+[node name="Merchant" type="Node2D"]
+z_index = -1
+script = ExtResource("1_j63r0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.129825, 0.141509)
+texture = ExtResource("1_suyck")
+centered = false
+flip_h = true
+
+[node name="InteractArea" parent="." instance=ExtResource("2_rjimo")]
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(-15, 28)
+
+[node name="Label" parent="InteractArea" index="1"]
+offset_left = 8.0
+offset_top = -26.0
+offset_right = 30.0
+offset_bottom = -2.0
+
+[editable path="InteractArea"]

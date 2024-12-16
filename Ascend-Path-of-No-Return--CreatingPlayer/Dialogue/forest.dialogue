@@ -1,0 +1,54 @@
+~ prisoner
+if prisoner_free == false
+	if InventoryManager.has_inventory_item("2"):
+		- Use potion on vines
+			do InventoryManager.remove_from_inventory("2")
+			do delete_vines()
+		=> END
+	elif CollectibleManager.total_mushroom_count == 3:
+		Prisoner: Great, now just take those mushrooms and make the potion!
+		- How do I do that?
+			Prisoner: Use a cauldron, I believe there's one nearby
+		- Okay
+			=> END
+		=> END
+	else:
+		Prisoner: Please help me! 
+		- What can I do?
+		Prisoner: Collect 3 mushrooms and create a potion to dissolve these vines
+		=> END
+else
+	if has_key == false
+		Prisoner: Thank you so much for freeing me, you wouldn't believe how long I've been stuck in there
+		Prisoner: Here, take this. I was going to use it but you seem much stronger than I am.
+		do InventoryManager.add_to_inventory("3", "castle_key")
+		set has_key = true
+		* added CASTLE KEY to inventory *
+		=> END
+	else
+		Prisoner: Good luck on your journey!
+		=> END
+
+~ cauldron
+if CollectibleManager.total_mushroom_count == 3
+	- Place mushrooms in cauldron
+		...
+		do change_cauldron()
+		do InventoryManager.add_to_inventory("2", "potion")
+		set CollectibleManager.total_mushroom_count = 0
+		* added Potion to inventory *
+		=> END
+else
+	I have nothing to put here
+	=> END
+
+~ lock
+if InventoryManager.has_inventory_item("3")
+	- Use castle key on lock
+		do delete_lock()
+		do InventoryManager.remove_from_inventory("3")
+		=> END
+else
+	% Seems to be locked...
+	% There must be a key somewhere
+	=> END

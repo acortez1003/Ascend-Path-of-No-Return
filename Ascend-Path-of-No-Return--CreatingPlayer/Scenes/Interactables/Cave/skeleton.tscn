@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh1yrbg878vcl"]
+
+[ext_resource type="Script" path="res://Script/Interactables/Cave/skeleton.gd" id="1_vd337"]
+[ext_resource type="Texture2D" uid="uid://bvnf4xxsg6qpo" path="res://Sprites/Interactables/skeleton.jpg" id="2_s1gcv"]
+[ext_resource type="PackedScene" uid="uid://jiiccybsu5tm" path="res://Scenes/Interactables/interact_area.tscn" id="3_ona6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1273c"]
+size = Vector2(49, 27)
+
+[node name="Skeleton" type="Node2D"]
+script = ExtResource("1_vd337")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(24.625, 13.625)
+scale = Vector2(0.0663265, 0.0670426)
+texture = ExtResource("2_s1gcv")
+
+[node name="InteractArea" parent="." instance=ExtResource("3_ona6f")]
+position = Vector2(-24, 16)
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(89, -2)
+
+[node name="Label" parent="InteractArea" index="1"]
+offset_left = 38.0
+offset_top = -39.0
+offset_right = 60.0
+offset_bottom = -15.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(24.5, 13.5)
+shape = SubResource("RectangleShape2D_1273c")
+
+[editable path="InteractArea"]

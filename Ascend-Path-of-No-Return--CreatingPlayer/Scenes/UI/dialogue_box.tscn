@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxhto5ul2c5q1"]
+
+[ext_resource type="Script" path="res://Script/UI/dialogue_box.gd" id="1_3dph5"]
+[ext_resource type="Texture2D" uid="uid://bdylfhm0sa8w7" path="res://Sprites/Interactables/dialogue_box.jpg" id="1_fg77g"]
+
+[node name="DialogueBox" type="CanvasLayer"]
+script = ExtResource("1_3dph5")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = 5.0
+offset_top = 190.0
+offset_right = 474.0
+offset_bottom = 263.0
+texture = ExtResource("1_fg77g")
+region_rect = Rect2(13.128, 129.641, 1003.59, 245.539)
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 172.0
+offset_bottom = 26.0
+text = "Name"
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 25.0
+offset_right = 456.0
+offset_bottom = 65.0
+text = "Text"

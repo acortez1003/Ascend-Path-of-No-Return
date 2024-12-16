@@ -1,0 +1,122 @@
+[gd_scene load_steps=18 format=3 uid="uid://c77t6e6ya7xvv"]
+
+[ext_resource type="Texture2D" uid="uid://cqmh0elsupm7e" path="res://Sprites/Enemies/Warden/Agis/Agis.png" id="1_qhm1w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huicb"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(0, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj0e4"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(224, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smiga"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(448, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pux78"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(672, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5evf"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(896, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cti4r"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(1120, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g76vb"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(1344, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13mkq"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(1568, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6olhw"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(1792, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk2gq"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(2016, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jri0u"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(2240, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sym6e"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(2464, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe54k"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(2688, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n82jq"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(2912, 0, 224, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m65g6"]
+atlas = ExtResource("1_qhm1w")
+region = Rect2(3136, 0, 224, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_34gnb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huicb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smiga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pux78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5evf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cti4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g76vb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13mkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6olhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk2gq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jri0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sym6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe54k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n82jq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m65g6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="enemy_warden" type="AnimatedSprite2D"]
+position = Vector2(0, -119)
+sprite_frames = SubResource("SpriteFrames_34gnb")
+autoplay = "default"
+frame_progress = 0.447584

@@ -1,0 +1,8 @@
+~ open
+do wait(1)
+do SceneManager.open_cutscene()
+=> END
+
+~ next
+Wh... Where am I? What is this place? Who am I?
+=> END

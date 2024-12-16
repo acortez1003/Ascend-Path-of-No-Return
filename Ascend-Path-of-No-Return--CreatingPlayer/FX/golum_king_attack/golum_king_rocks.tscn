@@ -1,0 +1,85 @@
+[gd_scene load_steps=14 format=3 uid="uid://um83r6q8evwy"]
+
+[ext_resource type="Texture2D" uid="uid://br8dw66vof82s" path="res://Sprites/FX/Golum_King_Attack/Rocks/006.png" id="1_xsq4c"]
+[ext_resource type="Texture2D" uid="uid://cklmlf1k5pjs6" path="res://Sprites/FX/Golum_King_Attack/Rocks/007.png" id="2_07m0r"]
+[ext_resource type="Texture2D" uid="uid://77nm7yrmc2re" path="res://Sprites/FX/Golum_King_Attack/Rocks/008.png" id="3_ekqde"]
+[ext_resource type="Texture2D" uid="uid://d0f107fd1jv8a" path="res://Sprites/FX/Golum_King_Attack/Rocks/009.png" id="4_nythv"]
+[ext_resource type="Texture2D" uid="uid://bovohqxa3bywj" path="res://Sprites/FX/Golum_King_Attack/Rocks/010.png" id="5_boera"]
+[ext_resource type="Texture2D" uid="uid://dstqq1w1dcgjt" path="res://Sprites/FX/Golum_King_Attack/Rocks/001.png" id="6_wpdn5"]
+[ext_resource type="Texture2D" uid="uid://4yredyh2i2sk" path="res://Sprites/FX/Golum_King_Attack/Rocks/002.png" id="7_7cja6"]
+[ext_resource type="Texture2D" uid="uid://bg4bmemlgowhm" path="res://Sprites/FX/Golum_King_Attack/Rocks/003.png" id="8_vv2kf"]
+[ext_resource type="Texture2D" uid="uid://dcfqdakqxmmns" path="res://Sprites/FX/Golum_King_Attack/Rocks/004.png" id="9_16r66"]
+[ext_resource type="Texture2D" uid="uid://byyiugwopjjqe" path="res://Sprites/FX/Golum_King_Attack/Rocks/005.png" id="10_0ko2w"]
+[ext_resource type="Script" path="res://FX/golum_king_attack/golum_king_rocks.gd" id="11_rarqk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rdvuq"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xsq4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_07m0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ekqde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nythv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_boera")
+}],
+"loop": false,
+"name": &"impact",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wpdn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7cja6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vv2kf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_16r66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ko2w")
+}],
+"loop": true,
+"name": &"travel",
+"speed": 16.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_de2om"]
+radius = 9.0
+height = 44.0
+
+[node name="GolumKingRocks" type="AnimatedSprite2D" groups=["Enemy", "Projectiles"]]
+sprite_frames = SubResource("SpriteFrames_rdvuq")
+animation = &"travel"
+script = ExtResource("11_rarqk")
+speed = 200
+damage = 5
+
+[node name="remove_timer" type="Timer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy", "Projectiles"]]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["Enemy", "Projectiles"]]
+position = Vector2(-1, 6)
+shape = SubResource("CapsuleShape2D_de2om")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

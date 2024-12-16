@@ -1,0 +1,41 @@
+~ skeleton
+if picked_up_medallion == false
+	There seems to be a medallion attatched to the skeleton
+	- Take it
+		set picked_up_medallion = true
+		do InventoryManager.add_to_inventory("1", "medallion")
+		do InventoryManager.print_inventory()
+	* added Medallion to inventory *
+	=> END
+else
+	% I wonder what happened to him...
+	% Poor guy
+	=> END
+
+~ shrine
+if placed_medallion == false
+	There's a hole in this shrine the shape of a circle
+	if InventoryManager.has_inventory_item("1")
+		Maybe the medallion I grabbed will fit
+		- Place medallion
+			set placed_medallion = true
+			do InventoryManager.remove_from_inventory("1")
+			do InventoryManager.print_inventory()
+		...
+		Things suddenly feel at peace
+		=> END
+	=> END
+else
+	Cool medallion
+	=> END
+
+~ ghost
+if placed_medallion == true
+	Thank you so much for putting me to rest... you can now go beyond
+	do delete_ghost()
+	=> END
+else
+	No one can go beyond the cave until I have been put to peace...
+	- How do I do that?
+	My body is here somewhere, and I can't rest until it has been returned to my shrine
+	=> END

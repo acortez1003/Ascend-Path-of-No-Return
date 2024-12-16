@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctichvngdpihj"]
+
+[ext_resource type="Script" path="res://Script/UI/gameover_screen.gd" id="1_fk0uu"]
+
+[node name="gameover_screen" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_fk0uu")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 619.0
+offset_top = 397.0
+offset_right = 1154.0
+offset_bottom = 663.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 809.0
+offset_top = 463.0
+offset_right = 961.0
+offset_bottom = 520.0
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="retry_button" type="Button" parent="."]
+offset_left = 851.0
+offset_top = 557.0
+offset_right = 918.0
+offset_bottom = 595.0
+text = "Retry"
+
+[connection signal="pressed" from="retry_button" to="." method="_on_retry_button_pressed"]

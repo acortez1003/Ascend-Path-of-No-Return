@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cepcwrsnm0qq7"]
+
+[ext_resource type="Script" path="res://Script/Interactables/Forest/lock.gd" id="1_mhedg"]
+[ext_resource type="Texture2D" uid="uid://dw1amqpkmbwdh" path="res://Sprites/Interactables/castle_lock.png" id="2_ms6o5"]
+[ext_resource type="PackedScene" uid="uid://jiiccybsu5tm" path="res://Scenes/Interactables/interact_area.tscn" id="3_wpelt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06yv3"]
+size = Vector2(58, 65)
+
+[node name="Lock" type="Node2D"]
+script = ExtResource("1_mhedg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_ms6o5")
+centered = false
+flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(5, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(34, -4.5)
+shape = SubResource("RectangleShape2D_06yv3")
+
+[node name="InteractArea" parent="." instance=ExtResource("3_wpelt")]
+position = Vector2(45, 14)
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(38, 30)
+
+[node name="Label" parent="InteractArea" index="1"]
+offset_left = -24.0
+offset_top = -41.0
+offset_right = -2.0
+offset_bottom = -17.0
+
+[editable path="InteractArea"]

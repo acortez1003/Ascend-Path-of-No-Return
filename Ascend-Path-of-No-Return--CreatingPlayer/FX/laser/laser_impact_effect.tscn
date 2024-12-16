@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://gla1rc414sox"]
+
+[ext_resource type="Texture2D" uid="uid://cnn8xcnivcppb" path="res://Sprites/FX/impact-1.png" id="1_w3by8"]
+[ext_resource type="Texture2D" uid="uid://lbfcb5w6jc5l" path="res://Sprites/FX/impact-2.png" id="2_ekt2a"]
+[ext_resource type="Texture2D" uid="uid://brbjg70uw743v" path="res://Sprites/FX/impact-3.png" id="3_qmast"]
+[ext_resource type="Texture2D" uid="uid://dd6rnuw5lh6l1" path="res://Sprites/FX/impact-4.png" id="4_lspk0"]
+[ext_resource type="Texture2D" uid="uid://ddiahiqmhdaur" path="res://Sprites/FX/impact-5.png" id="5_43niw"]
+[ext_resource type="Script" path="res://FX/laser/laser_impact_effect.gd" id="6_1yynw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjxo6"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w3by8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ekt2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qmast")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lspk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_43niw")
+}],
+"loop": false,
+"name": &"impact",
+"speed": 10.0
+}]
+
+[node name="LaserImpactEffect" type="AnimatedSprite2D" groups=["Enemy"]]
+sprite_frames = SubResource("SpriteFrames_qjxo6")
+animation = &"impact"
+autoplay = "impact"
+frame = 4
+frame_progress = 1.0
+script = ExtResource("6_1yynw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

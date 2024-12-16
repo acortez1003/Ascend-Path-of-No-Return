@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://xl26xnjk2w4i"]
+
+[ext_resource type="Script" path="res://Script/Interactables/chest.gd" id="1_kmi57"]
+[ext_resource type="PackedScene" uid="uid://jiiccybsu5tm" path="res://Scenes/Interactables/interact_area.tscn" id="2_72lgp"]
+[ext_resource type="Texture2D" uid="uid://b5rr26h0dj5e1" path="res://Sprites/Interactables/chest.png" id="2_kn724"]
+[ext_resource type="Resource" uid="uid://c70b2rytsb647" path="res://Dialogue/prison.dialogue" id="2_ku84u"]
+
+[sub_resource type="Animation" id="Animation_o6sjl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_3kbdd"]
+resource_name = "open_chest"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_anoeg"]
+_data = {
+"RESET": SubResource("Animation_o6sjl"),
+"open_chest": SubResource("Animation_3kbdd")
+}
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_kmi57")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_kn724")
+centered = false
+hframes = 2
+
+[node name="InteractArea" parent="." instance=ExtResource("2_72lgp")]
+position = Vector2(16, 17)
+dialogue_resource = ExtResource("2_ku84u")
+dialogue_start = "chest"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_anoeg")
+}
+
+[editable path="InteractArea"]

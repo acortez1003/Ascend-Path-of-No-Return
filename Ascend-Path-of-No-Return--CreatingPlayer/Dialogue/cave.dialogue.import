@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://4ccdxvyl2g3q"
+path="res://.godot/imported/cave.dialogue-89438ca8b1c8ba7d63d966823cc2ecda.tres"
+
+[deps]
+
+source_file="res://Dialogue/cave.dialogue"
+dest_files=["res://.godot/imported/cave.dialogue-89438ca8b1c8ba7d63d966823cc2ecda.tres"]
+
+[params]
+
+defaults=true

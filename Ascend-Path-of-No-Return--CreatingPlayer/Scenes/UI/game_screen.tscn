@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsln2eed532dk"]
+
+[ext_resource type="Script" path="res://Script/UI/game_screen.gd" id="1_h6xej"]
+[ext_resource type="Texture2D" uid="uid://iuomvnjgb655" path="res://Scenes/UI/theme/icons8-pause-50.png" id="2_mmnfw"]
+[ext_resource type="PackedScene" uid="uid://cuhwbpht6tojn" path="res://Scenes/UI/Player_Health_Bar/PlayerHealthBar.tscn" id="3_l26ik"]
+[ext_resource type="Texture2D" uid="uid://d4lyilxyevk05" path="res://Sprites/Interactables/coin.png" id="4_7netd"]
+
+[node name="GameScreen" type="CanvasLayer"]
+script = ExtResource("1_h6xej")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PauseTextureButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("2_mmnfw")
+
+[node name="PlayerHealthBar" parent="." instance=ExtResource("3_l26ik")]
+scale = Vector2(4, 4)
+
+[node name="coin_sprite" type="Sprite2D" parent="."]
+position = Vector2(30, 43)
+scale = Vector2(5, 5)
+texture = ExtResource("4_7netd")
+hframes = 35
+
+[node name="coin_number" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 39.0
+offset_right = 96.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[connection signal="pressed" from="MarginContainer/PauseTextureButton" to="." method="_on_pause_texture_button_pressed"]
