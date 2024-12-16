@@ -1,0 +1,15 @@
+~ chest
+There's a closed chest
+- Open chest
+	do open_chest()
+	~ inside
+	There is a note and a key inside.
+	- Read note
+		Ascend, for that is the only path => inside
+	- Take key
+		if has_prison_key
+			I already have the key, maybe I should use it
+		else
+			do take_key()
+		=> inside
+	- Leave => END

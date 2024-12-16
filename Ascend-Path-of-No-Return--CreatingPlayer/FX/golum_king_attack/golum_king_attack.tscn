@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://c5qvaeoke3c8c"]
+
+[ext_resource type="Texture2D" uid="uid://d1bnmuo6ol2gn" path="res://Sprites/FX/Golum_King_Attack/Portal/001.png" id="1_j2my4"]
+[ext_resource type="Texture2D" uid="uid://b1t6wv8uool6" path="res://Sprites/FX/Golum_King_Attack/Portal/002.png" id="2_gmvu0"]
+[ext_resource type="Texture2D" uid="uid://c04ky8mr6up3y" path="res://Sprites/FX/Golum_King_Attack/Portal/003.png" id="3_kis3b"]
+[ext_resource type="Texture2D" uid="uid://di507y8hgihla" path="res://Sprites/FX/Golum_King_Attack/Portal/004.png" id="4_b5obn"]
+[ext_resource type="Texture2D" uid="uid://b88ftix0u0vcs" path="res://Sprites/FX/Golum_King_Attack/Portal/005.png" id="5_ul43h"]
+[ext_resource type="Texture2D" uid="uid://c7imolgdybn3f" path="res://Sprites/FX/Golum_King_Attack/Portal/009.png" id="6_bfkrq"]
+[ext_resource type="Texture2D" uid="uid://dyf0x0sdne6oh" path="res://Sprites/FX/Golum_King_Attack/Portal/010.png" id="7_tqoqh"]
+[ext_resource type="Texture2D" uid="uid://bv4oi3iu0bikb" path="res://Sprites/FX/Golum_King_Attack/Portal/008.png" id="8_7smie"]
+[ext_resource type="Texture2D" uid="uid://clo8pmj6s3euu" path="res://Sprites/FX/Golum_King_Attack/Portal/007.png" id="9_nryh3"]
+[ext_resource type="Texture2D" uid="uid://brhiypaxwmmjo" path="res://Sprites/FX/Golum_King_Attack/Portal/006.png" id="10_62sl3"]
+[ext_resource type="Script" path="res://FX/golum_king_attack/golum_king_attack.gd" id="11_3ivy2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ocxpa"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j2my4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gmvu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kis3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b5obn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ul43h")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bfkrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tqoqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7smie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nryh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_62sl3")
+}],
+"loop": false,
+"name": &"portal_close",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_62sl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nryh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7smie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tqoqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bfkrq")
+}],
+"loop": false,
+"name": &"portal_open",
+"speed": 10.0
+}]
+
+[node name="GolumKingAttack" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ocxpa")
+animation = &"idle"
+script = ExtResource("11_3ivy2")
+
+[node name="remove_timer" type="Timer" parent="."]
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, 5)
+
+[connection signal="timeout" from="remove_timer" to="." method="_on_remove_timer_timeout"]

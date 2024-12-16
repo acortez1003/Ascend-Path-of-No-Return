@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://b52jn7n253j71"]
+
+[ext_resource type="Texture2D" uid="uid://dg81b8sv4l2ej" path="res://Sprites/FX/shot-1.png" id="1_dgiwh"]
+[ext_resource type="Texture2D" uid="uid://bpneas574njhg" path="res://Sprites/FX/shot-2.png" id="2_6eohc"]
+[ext_resource type="Script" path="res://FX/laser/sentinel_laser.gd" id="3_326e1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pj0di"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dgiwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6eohc")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdc60"]
+radius = 3.15548
+
+[node name="SentinelLaser" type="AnimatedSprite2D" groups=["Enemy", "Projectiles"]]
+sprite_frames = SubResource("SpriteFrames_pj0di")
+animation = &"shot"
+autoplay = "shot"
+script = ExtResource("3_326e1")
+speed = 175
+damage = 5
+
+[node name="remove_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy", "Projectiles"]]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["Enemy", "Projectiles"]]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_fdc60")
+
+[connection signal="timeout" from="remove_timer" to="." method="_on_remove_timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

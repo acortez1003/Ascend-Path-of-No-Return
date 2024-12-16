@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://18lodkbrmxnx"]
+
+[ext_resource type="Script" path="res://Cutscenes/golum_king_cutscene.gd" id="1_07orr"]
+[ext_resource type="FontFile" uid="uid://bii5t2keewaug" path="res://Scenes/UI/theme/GravityRegular5.ttf" id="2_cvl6d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_essno"]
+size = Vector2(20, 169)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsuqy"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgkpb"]
+bg_color = Color(0.485586, 0.00526695, 0.0271916, 1)
+
+[node name="GolumKingCutscene" type="Node2D"]
+script = ExtResource("1_07orr")
+
+[node name="TriggerArea" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+position = Vector2(0, -84.5)
+shape = SubResource("RectangleShape2D_essno")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DialogueBox" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.711
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 16.03
+offset_right = -96.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueText" type="RichTextLabel" parent="CanvasLayer/DialogueBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.167
+anchor_right = 0.972
+anchor_bottom = 0.833
+offset_left = 7.936
+offset_top = -0.0160007
+offset_right = -79.936
+offset_bottom = -7.984
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_cvl6d")
+text = "Prisoner 1099... you have arrived"
+
+[node name="DialogueText2" type="RichTextLabel" parent="CanvasLayer/DialogueBox"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.167
+anchor_right = 0.972
+anchor_bottom = 0.833
+offset_left = 7.936
+offset_top = -0.0160007
+offset_right = -79.936
+offset_bottom = -7.984
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_cvl6d")
+text = "This is your first trial, beat the GOLEM KING and continue your Ascent."
+
+[node name="BossHealthBar" type="ProgressBar" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.919
+anchor_right = 0.8
+anchor_bottom = 0.963
+offset_top = -0.130005
+offset_bottom = -0.0100098
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_hsuqy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xgkpb")
+value = 100.0
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/BossHealthBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.389
+anchor_top = -0.667
+anchor_right = 0.611
+offset_left = -0.0320053
+offset_top = 0.00400066
+offset_right = 0.0319977
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("2_cvl6d")
+text = "Golem King"
+scroll_active = false
+
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]

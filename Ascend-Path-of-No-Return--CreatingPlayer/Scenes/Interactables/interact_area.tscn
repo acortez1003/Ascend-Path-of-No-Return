@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://jiiccybsu5tm"]
+
+[ext_resource type="Script" path="res://Script/Interactables/interact_area.gd" id="1_jb7d2"]
+[ext_resource type="FontFile" uid="uid://bii5t2keewaug" path="res://Scenes/UI/theme/GravityRegular5.ttf" id="2_wu407"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1bf3"]
+size = Vector2(30.25, 32)
+
+[node name="InteractArea" type="Area2D"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_jb7d2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f1bf3")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -11.0
+offset_top = -47.0
+offset_right = 11.0
+offset_bottom = -23.0
+theme_override_fonts/font = ExtResource("2_wu407")
+text = "[E]"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

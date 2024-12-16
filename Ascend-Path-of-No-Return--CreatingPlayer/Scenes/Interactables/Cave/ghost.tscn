@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dofdbmqmrlx1f"]
+
+[ext_resource type="Script" path="res://Script/Interactables/Cave/ghost.gd" id="1_0e0hj"]
+[ext_resource type="Texture2D" uid="uid://ba5j4wrabjm1p" path="res://Sprites/Interactables/ghost.png" id="1_626le"]
+[ext_resource type="PackedScene" uid="uid://jiiccybsu5tm" path="res://Scenes/Interactables/interact_area.tscn" id="2_bcint"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqsf1"]
+size = Vector2(59, 71)
+
+[node name="Ghost" type="Node2D"]
+script = ExtResource("1_0e0hj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.244813, 0.248804)
+texture = ExtResource("1_626le")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(29.5, 16.5)
+shape = SubResource("RectangleShape2D_wqsf1")
+
+[node name="InteractArea" parent="." instance=ExtResource("2_bcint")]
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(-15, 32)
+
+[node name="Label" parent="InteractArea" index="1"]
+offset_left = 21.0
+offset_top = -26.0
+offset_right = 43.0
+offset_bottom = -2.0
+
+[editable path="InteractArea"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl26caqsohcgq"]
+
+[ext_resource type="Script" path="res://Script/Interactables/cauldron.gd" id="1_2d1w5"]
+[ext_resource type="PackedScene" uid="uid://jiiccybsu5tm" path="res://Scenes/Interactables/interact_area.tscn" id="2_l4egv"]
+[ext_resource type="Texture2D" uid="uid://cositiia3blh" path="res://Sprites/Interactables/empty_cauldron.png" id="3_whrt5"]
+[ext_resource type="Texture2D" uid="uid://db3h46r28lcuh" path="res://Sprites/Interactables/full_cauldron.png" id="4_83ggh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bltj"]
+radius = 19.0
+height = 46.0
+
+[node name="Cauldron" type="Node2D"]
+script = ExtResource("1_2d1w5")
+
+[node name="InteractArea" parent="." instance=ExtResource("2_l4egv")]
+position = Vector2(53, 26)
+
+[node name="Label" parent="InteractArea" index="1"]
+offset_left = -23.0
+offset_top = -49.0
+offset_right = -1.0
+offset_bottom = -25.0
+
+[node name="empty" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.118)
+texture = ExtResource("3_whrt5")
+centered = false
+
+[node name="full" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 5.96046e-08)
+scale = Vector2(0.1, 0.118)
+texture = ExtResource("4_83ggh")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-3, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(21, 25)
+shape = SubResource("CapsuleShape2D_4bltj")
+
+[editable path="InteractArea"]

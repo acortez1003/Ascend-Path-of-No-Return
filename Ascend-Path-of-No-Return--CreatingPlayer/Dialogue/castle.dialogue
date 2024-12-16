@@ -1,0 +1,9 @@
+~ boss_door
+if InventoryManager.has_inventory_item("10") and InventoryManager.has_inventory_item("11")
+	Open door?
+	- Yes
+		do change_door()
+		=> END
+	- No
+		=> END
+=> END

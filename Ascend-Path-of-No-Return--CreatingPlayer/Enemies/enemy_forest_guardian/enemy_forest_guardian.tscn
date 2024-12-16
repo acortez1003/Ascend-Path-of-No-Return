@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://cx6k2ycbkfw62"]
+
+[ext_resource type="Texture2D" uid="uid://blry7w5g8dnp7" path="res://Sprites/Enemies/Forest_Guardian/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png" id="1_rmyea"]
+[ext_resource type="Script" path="res://Enemies/enemy_forest_guardian/enemy_forest_guardian.gd" id="2_fjtn2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkwr0"]
+atlas = ExtResource("1_rmyea")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypew1"]
+atlas = ExtResource("1_rmyea")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5al3"]
+atlas = ExtResource("1_rmyea")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqip4"]
+atlas = ExtResource("1_rmyea")
+region = Rect2(300, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x03n5"]
+atlas = ExtResource("1_rmyea")
+region = Rect2(400, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euwkw"]
+atlas = ExtResource("1_rmyea")
+region = Rect2(500, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fllou"]
+atlas = ExtResource("1_rmyea")
+region = Rect2(600, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrimr"]
+atlas = ExtResource("1_rmyea")
+region = Rect2(700, 100, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4svc0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkwr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypew1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5al3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqip4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x03n5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euwkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fllou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrimr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="enemy_forest_guardian" type="AnimatedSprite2D"]
+position = Vector2(0, -35)
+sprite_frames = SubResource("SpriteFrames_4svc0")
+autoplay = "default"
+frame_progress = 0.792975
+script = ExtResource("2_fjtn2")
